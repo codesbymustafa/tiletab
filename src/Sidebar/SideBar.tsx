@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback, JSX } from "react";
 import SideBarContent from "./SideBarContent";
 
 const SideBar = () : JSX.Element  => {
-    const [isVisible, setIsVisible] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
     const [width, setWidth] = useState(300);
     const [isResizing, setIsResizing] = useState(false);
     const sidebarRef = useRef<HTMLDivElement>(null);

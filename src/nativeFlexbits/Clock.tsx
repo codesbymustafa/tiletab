@@ -12,8 +12,10 @@ function Clock(): JSX.Element {
       }, []);
       
       return (
-        <div className="text-xl font-bold text-green-400">
-          {time}
+        <div className="h-full w-full flex items-center justify-center bg-gray-900">
+          <div className="text-xl font-bold text-green-400">
+            {time}
+          </div>
         </div>
       );
     }

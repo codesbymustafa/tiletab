@@ -404,17 +404,17 @@ export default function Calendar ({
 
   const infoBoxThreshold = containerHeight / 2;
   const infoBoxStyle: React.CSSProperties =
-    mousePosition.y > infoBoxThreshold ? { bottom: '4px' } : { top: '4px' };
+    mousePosition.y < infoBoxThreshold ? { bottom: '4px' } : { top: '4px' };
 
   return (
     <div
-      className={`min-h-screen flex items-center justify-center p-4 ${
+      className={`h-full w-full flex items-center justify-center p-2 ${
         isDark ? 'bg-gray-950' : 'bg-gray-50'
       }`}
       style={rootStyle}
     >
       <div
-        className={`w-full max-w-md rounded-lg border relative overflow-hidden ${
+        className={`h-full w-full max-w-md rounded-lg border relative overflow-hidden ${
           isDark ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'
         }`}
       >
@@ -451,9 +451,10 @@ export default function Calendar ({
                 <p className={`text-[10px] mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                   {getDaysFromToday() === 0 
                     ? 'Today' 
-                    : getDaysFromToday() > 0 
-                      ? `${getDaysFromToday()} ${getDaysFromToday() === 1 ? 'day' : 'days'} from now`
-                      : `${Math.abs(getDaysFromToday())} ${Math.abs(getDaysFromToday()) === 1 ? 'day' : 'days'} ago`
+                    : 
+                    `
+                    ${Math.abs(getDaysFromToday())} ${Math.abs(getDaysFromToday()) === 1 ? 'day' : 'days'} ${getDaysFromToday() > 0  ? 'from now' : 'ago'}
+                    `
                   }
                 </p>
               </div>

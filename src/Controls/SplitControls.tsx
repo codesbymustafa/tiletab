@@ -1,6 +1,7 @@
 import React from 'react'
 import {useSplit, useTree} from '../stores/Treestore';
 import {enableMapSet } from 'immer';
+import { FLEXBIT_REGISTRY } from '../stores/flexbitRegistry';
 enableMapSet();
 
 type SplitType = 'horizontal' | 'vertical';
@@ -97,13 +98,18 @@ export default function SplitControls() {
             {/* Component Name */}
             <div className="flex flex-col gap-1">
               <label className="text-gray-400 text-xs">New Component</label>
-              <input 
-                type="text"
+              <select
                 value={newComponent}
                 onChange={(e) => setNewComponent(e.target.value)}
-                placeholder="Component name"
-                className="px-3 py-1.5 bg-gray-700 text-white rounded text-sm border border-gray-600 focus:border-blue-500 focus:outline-none placeholder-gray-500"
-              />
+                className="px-3 py-1.5 bg-gray-700 text-white rounded text-sm border border-gray-600 focus:border-blue-500 focus:outline-none"
+              >
+                <option value="">-- Select Component --</option>
+                {Object.keys(FLEXBIT_REGISTRY).map((key) => (
+                  <option key={key} value={key}>
+                    {key}
+                  </option>
+                ))}
+              </select>
             </div>
 
             {/* Split Button */}
